@@ -1,0 +1,1 @@
+%cd%\resources\app\TS.exe

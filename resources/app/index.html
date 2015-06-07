@@ -1,0 +1,110 @@
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>teamselector</title>
+
+  <link rel="stylesheet" href="css/normalize.css">
+
+  <link rel='stylesheet prefetch' href='css/flags32.css'>
+  <link rel='stylesheet prefetch' href='css/bootstrap-combined.min.css'>
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+	
+  <link rel="stylesheet" type="text/css" href="css/component.css" />
+  <script src="js/modernizr.custom.js"></script>
+
+<style>
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: ;
+}
+
+.x.axis line {
+  stroke: #777;
+  stroke-dasharray: 2,2;
+}
+</style>
+
+  
+
+</head>
+
+<body>
+
+				
+<div style="text-align:center;clear:both;">
+
+</div>
+  <div class="g-container img_full"></div>
+
+<script>document.write('<pre id="datashow">' + require('ipc').sendSync('synchronous-message', 'readtheteamfile') + '</pre>')</script>
+
+
+			
+  <script src='js/jquery.js'></script>
+  <script src='js/d3.min.js'></script>
+  <script src='js/underscore-min.js'></script>
+  <script src="js/classie.js"></script>
+  <script src="js/progressButton.js"></script>
+  				
+   <button id="start" class="progress-button" data-style="rotate-angle-bottom" data-perspective data-horizontal>开始分组</button>
+   <!--<button id="qrcode" >扫描二维码上传头像</button>-->
+   <button id="init" class="progress-button" data-style="rotate-angle-bottom" data-perspective data-horizontal>恢复出厂设置</button>
+   
+  <script src="js/index.js"></script>
+
+ 
+<script>
+//$("#qrcode").hide();
+
+[].slice.call( document.querySelectorAll( 'button.progress-button' ) ).forEach( function( bttn ) {
+				new ProgressButton( bttn, {
+					callback : function( instance ) {
+						var progress = 0,
+							interval = setInterval( function() {
+								progress = require('ipc').sendSync('synchronous-message', 'readtheprofile')*0.01;//改为从文件读取进度//Math.min( progress + Math.random() * 0.1, 1 );
+								instance._setProgress( progress );
+
+								if( progress === 1 ) {
+									instance._stop(1);
+									clearInterval( interval );
+								}
+							}, 10 );
+					}
+				} );
+			} );
+/*require('child_process').execFile('E:/H-HTML5/teamselector_app/test.bat',null,{cwd:'E:/'},function (error,stdout,stderr) {
+        if (error !== null) {
+          console.log('exec error: ' + error);
+        }
+        else console.log('run success!');
+    });*/
+//console.log("11111111111111111111111111");
+/*var remote = require('remote');
+remote.require('fs').readFileSync('E:/H-HTML5/teamselector_app/data.txt');*/
+
+
+//console.log(require('ipc').sendSync('synchronous-message', 'readthedatafile')); // prints "pong"
+
+/*ipc.on('asynchronous-reply', function(arg) {
+  console.log(arg); // prints "pong"
+});
+ipc.send('asynchronous-message', 'ping');*/
+
+/*var execPath = require('remote').process.execPath
+var sdata = require('fs').readFileSync('E:/H-HTML5/teamselector_app/data.txt');
+alert(sdata);*/
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>teamselector</title>
+
+   <script src='js/jquery.js'></script>
+  <script src="js/jquery.qrcode.js"></script>
+  <script src="js/qrcode.js"></script>
+
+<style>
+
+
+</style>
+
+  
+
+</head>
+
+<body>
+<div id="qrcode"></div>
+
+			
+ 
+
+	<script>
+
+$('#qrcode').qrcode({ 
+    render: "table", //
+    width: 200, //
+    height:200, // 
+    text: "http://192.168.1.104:3000" //
+});
+
+
+
+
+</script>
+</body>
+
+</html>

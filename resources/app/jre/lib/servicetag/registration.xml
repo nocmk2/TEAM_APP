@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<registration_data version="1.0">
+   <environment>
+      <hostname>57XIQQ8CK3HB7AC</hostname>
+      <hostId/>
+      <osName>Windows 7</osName>
+      <osVersion>6.1</osVersion>
+      <osArchitecture>x86</osArchitecture>
+      <systemModel>80EQS00Q00</systemModel>
+      <systemManufacturer>LENOVO</systemManufacturer>
+      <cpuManufacturer>GenuineIntel</cpuManufacturer>
+      <serialNumber>3442930000535</serialNumber>
+   </environment>
+   <registry urn="urn:st:7024d49d-c00e-4ce0-8988-dc10ebe5640a" version="1.0">
+      <service_tag>
+         <instance_urn>urn:st:dac14b7a-c157-45f8-8604-259b427d0866</instance_urn>
+         <product_name>Java SE 6 Runtime Environment</product_name>
+         <product_version>1.6.0_20</product_version>
+         <product_urn>urn:uuid:92d1de8c-1e59-42c6-a280-1c379526bcbc</product_urn>
+         <product_parent_urn>urn:uuid:fdc90b21-018d-4cab-b866-612c7c119ed3</product_parent_urn>
+         <product_parent>Java Platform Standard Edition 6 (Java SE 6)</product_parent>
+         <product_defined_inst_id>id=1.6.0_20-b02 x86,dir=C:\Program Files (x86)\Java\jre6</product_defined_inst_id>
+         <product_vendor>Sun Microsystems</product_vendor>
+         <platform_arch>x86</platform_arch>
+         <timestamp>2014-10-17 05:13:10 GMT</timestamp>
+         <container>global</container>
+         <source>Windows JRE installer</source>
+         <installer_uid>-1</installer_uid>
+      </service_tag>
+   </registry>
+</registration_data>

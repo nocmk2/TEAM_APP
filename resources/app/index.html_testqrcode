@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+
+</head>
+
+<body>
+<div id="qrcode">111111122211111111111111</div>
+
+
+  <script src='js/jquery.js'></script>
+  <script src="js/jquery.qrcode.js"></script>
+  <script src="js/qrcode.js"></script>
+  <script>
+  jQuery(function(){
+		$('#qrcode').qrcode({ 
+			render: "table", //table方式 
+			width: 200, //宽度 
+			height:200, //高度 
+			text: "www.helloweba.com" //任意内容 
+		});
+	})
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team_App</title>
+
+	<link rel='stylesheet' href='css\upload.css'>
+    <script src="js/modernizr.js"></script>
+
+<div class="container" style="max-width: 800px;text-align: center ">
+    
+<div id="header" class="row center-block">  
+   <!-- <img  id="headerimage" src="css/images/author.png"/> -->
+    <div id="headertext">
+        <div class="row">
+            <div >
+                <h1 id="picmeh1id" >
+                    TEAM_APP
+                </h1>
+            </div>
+            <div class="subheader">
+                The Best Edu APP<span id="demoSpan">#BY TEAMAPP</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="subheader">
+    选择学号：
+</div>
+<select id="selectid">
+</select>
+
+		
+<div id="selectImage">
+
+    <label id="uploadLabel" class="center-block" style="width: 230px;">
+        <button id="uploadFileId" class="btn btn-default center-block action" style="background-color: rgb(174, 117, 11); border-radius: 0" onclick=" document.getElementById('fileBtn').click(); ">         
+            click here to select your image
+        </button> 
+    </label>
+    <!--<p id="maxImageSize" class="help-block center-block bodyfont">P.S. We don't keep the photo</p>-->
+</div>
+
+<form id = "postform" action="/upload?id=S100" method="post" enctype="multipart/form-data">
+        <input id="fileBtn" type="file" name="upload" style="visibility: hidden; width: 0px; height: 0px"/>
+        <input id= "submitBtn" type="submit" class="btn btn-default center-block action"  style="background-color: rgb(174, 117, 11); border-radius: 0" value="upload file" >
+</form> 
+
+
+<div class="thumbnail">
+    <img id = "img" src="images\upload.png" />
+</div>
+
+
+<pre id="data">
+<%= d%>
+</pre>
+
+
+
+
+<!--
+<a id="dontWorryId" class="bodyfont center-block link" style="text-align: center; padding-bottom: 20px;" href="http://aka.ms/facedemo" target="_blank">
+    <span>Read the story behind this demo</span>
+</a>
+-->
+
+<!--<input data-val="true" data-val-required="The IsTest field is required." id="isTest" name="isTest" type="hidden" value="False" />-->
+
+
+</div>
+
+
+<script src="js/jquery-2.0.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src='js/underscore-min.js'></script>
+<script src='js/d3.min.js'></script>
+
+
+
+<script>
+"use strict";
+//处理学生信息数据
+function parseData(d) {
+  var keys = _.keys(d[0]);
+  return _.map(d, function(d) {
+    var o = {};
+    _.each(keys, function(k) {
+      if( k == 'TEAM'||k == 'ID') // Prevent Strings Being Parsed
+        o[k] = parseFloat(d[k]);
+      else
+        o[k] = d[k];
+    });
+    return o;
+  });
+}
+
+
+
+
+
+//选择学号下拉列表发生变化
+    $("pre#data").hide();
+    var studentid = "<%= sid%>";          //获取学生学号
+    var data = d3.csv.parse($("pre#data").text());  //用d3的函数处理csv数据
+    data = parseData(data);        //解析数据
+
+   _.each(data,function(d) {
+        if(d["STUID"]==studentid){
+             $("#selectid").append('<option id = '+d["STUID"]+' selected="true" value = '+d["STUID"]+'>'+d["STUID"]+'</option>');
+        }else{
+             $("#selectid").append('<option id = '+d["STUID"]+' value = '+d["STUID"]+'>'+d["STUID"]+'</option>');
+        }
+});
+
+   $("#selectid").change(function () {
+        $('#postform').attr("action","/upload?id="+$('#selectid').val());    
+    });
+
+
+    $("#img").attr("src","images\\"+studentid+".png");
+
+
+/*
+    for(var i=1;i<120;i++){ 
+      if('S'+i==studentid){
+        $("#selectid").append('<option id = S'+i+' selected="true" value = S'+i+'>S'+i+'</option>');
+      }else{
+        $("#selectid").append('<option id = S'+i+' value = S'+i+'>S'+i+'</option>');
+        }
+    }
+*/
+</script>
+
+
+</body>
+</html>
+
+
+

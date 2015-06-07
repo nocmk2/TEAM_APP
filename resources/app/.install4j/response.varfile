@@ -1,0 +1,8 @@
+#install4j response file for TS 1.1
+#Tue May 05 10:52:05 CST 2015
+sys.programGroupAllUsers$Boolean=true
+sys.programGroupDisabled$Boolean=false
+sys.languageId=en
+sys.programGroupName=TS
+sys.adminRights$Boolean=true
+sys.installationDir=C\:\\Program Files (x86)\\TS
